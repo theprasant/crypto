@@ -4,12 +4,8 @@ const { getPairFromAny } = require('../../libs/decorator/getPair');
 const { checkIfAny } = require('../../libs/decorator/checkAny');
 const tokens = require('../../libs/currencies/currency.json');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
-const {cleanRegex} = require('../../libs/decorator/regexCleaner');
-const {prefix} = require('../../config.json')
-// const { paginate } = require('../../libs/buttonEvent/button')
-// const {getUserFromId} = require('../../libs/getUser/getUserFromId')
-
-// console.log(tokens)
+const { cleanRegex } = require('../../libs/decorator/regexCleaner');
+const { prefix } = require('../../config.json')
 
 module.exports = {
     name: 'sell',
@@ -19,11 +15,11 @@ module.exports = {
     args: true,
     async execute(message, args) {
 
-        
+        let msg = await message.channel.send(`<a:gsearchgif:894799755278958602> Making a pizza ...`)
         let tokenArr = args.join(' ').split(',').map(t => {
             return t.trim();
         });
-        if (!tokenArr || !tokenArr.length) return message.channel.send(`No token provided\n> You have to provide the token names \n syntax: \`${prefix}sell <tokens seprated by commas>\``);
+        if (!tokenArr || !tokenArr.length) return msg.edit(`No token provided\n> You have to provide the token names \n syntax: \`${prefix}sell <tokens seprated by commas>\``);
 
         let coinsForSearch = [];
         let notSupportedTokens2 = [];
@@ -36,8 +32,8 @@ module.exports = {
             }
         }
 
-        if (notSupportedTokens2.length) return message.channel.send(`\`${notSupportedTokens2.join('\` , \`')}\` ${notSupportedTokens2 && notSupportedTokens2.length >= 2 ? 'are' : 'is'} not supported`)
-        if (!coinsForSearch.length) return message.channel.send(`No supported coins or tokens provided`)
+        if (notSupportedTokens2.length) return msg.edit(`\`${notSupportedTokens2.join('\` , \`')}\` ${notSupportedTokens2 && notSupportedTokens2.length >= 2 ? 'are' : 'is'} not supported`)
+        if (!coinsForSearch.length) return msg.edit(`No supported coins or tokens provided`)
 
         let coinsForSearchStr = coinsForSearch.join('|');
 
@@ -53,11 +49,13 @@ module.exports = {
 
         for (let i = 0; i < trader.length; i++) {
             let tUser = await message.client.users.fetch(trader[i]._id);
-            tradersEmbed.addField(`${tUser.tag}`, `${tUser} : \`${trader[i].buying.join('\`, \`')}\``);
+            // tradersEmbed.addField(`${tUser.tag}`, `${tUser} : \`${trader[i].buying.join('\`, \`')}\``);
+            tradersEmbed.addField(`${tUser.tag}`, `${tUser} : \`${trader[i].buying.join(', ')}\``);
             if (i > 9) break;
         }
 
-        await message.channel.send({content: `People buying  ${tokenArr.join(', ')}`, embeds: [tradersEmbed ] })
+        // await msg.edit({ content: `People buying  ${tokenArr.join(', ')}`, embeds: [tradersEmbed] })
+        await msg.edit({ content: `People buying  ${tokenArr.join(', ')}`, embeds: [tradersEmbed] })
 
     },
 };
