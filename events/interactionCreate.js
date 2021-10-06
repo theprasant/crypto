@@ -3,8 +3,9 @@ module.exports = {
 	name: 'interactionCreate',
 	async execute(interaction) {
 
-        if (interaction.isButton()) return btnEvent();
-        // if (!interaction.isCommand()) return;
+        // if (interaction.isButton());
+        //  return btnEvent();
+        if (!interaction.isCommand()) return;
 
         const command = interaction.client.slashCommands.get(interaction.commandName);
 
