@@ -1,5 +1,7 @@
+const { cleanRegex } = require('./regexCleaner')
 const checkIfAny = (query, obj) => {
 
+   query = cleanRegex(query)
     if (obj[query]) return true;
     // let matchedKeyFromKey = Object.keys(obj).filter(k => (new RegExp('^'+query+'$', 'i')).test(k));
     let queryKey = Object.keys(obj).filter(k => {
