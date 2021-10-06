@@ -16,6 +16,7 @@ module.exports = {
     async execute(message, args) {
 
         let msg = await message.channel.send(`<a:gsearchgif:894799755278958602> Making a pizza ...`)
+        console.log('1 time')
         let tokenArr = args.join(' ').split(',').map(t => {
             return t.trim();
         });
