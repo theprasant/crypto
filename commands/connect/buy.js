@@ -40,6 +40,7 @@ module.exports = {
         let formatedQueryToken = cleanRegex(coinsForSearchStr);
         let tokenReg = new RegExp('^' + formatedQueryToken + '$', 'ig')
         const trader = await Trader.find({ selling: tokenReg });
+        if(!trader||!trader.length) return msg.edit(`No Seller found !`)
 
         const tradersEmbed = new MessageEmbed()
             .setColor('#029769')

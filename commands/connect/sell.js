@@ -16,7 +16,6 @@ module.exports = {
     async execute(message, args) {
 
         let msg = await message.channel.send(`<a:gsearchgif:894799755278958602> Making a pizza ...`)
-        console.log('1 time')
         let tokenArr = args.join(' ').split(',').map(t => {
             return t.trim();
         });
@@ -41,12 +40,13 @@ module.exports = {
         let formatedQueryToken = cleanRegex(coinsForSearchStr);
         let tokenReg = new RegExp('^' + formatedQueryToken + '$', 'ig')
         const trader = await Trader.find({ buying: tokenReg });
+        if(!trader||!trader.length) return msg.edit(`No buyer found !`)
 
         const tradersEmbed = new MessageEmbed()
             .setColor('#0099ff')
             .setTitle('People to whom you can sell ')
             .setTimestamp()
-            .setFooter('Some footer text here', `${message.author.avatarURL()}`);
+            .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL()}`, `${message.author.avatarURL()}`);
 
         for (let i = 0; i < trader.length; i++) {
             let tUser = await message.client.users.fetch(trader[i]._id);
