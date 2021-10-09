@@ -4,7 +4,7 @@ try{
     let finalPerms = perms?perms:["VIEW_CHANNEL", "SEND_MESSAGES"];
     message.guild.channels.create(cname, {
         type: "GUILD_TEXT",
-        parent: '892287285926719498',
+        parent: '896269585081327646',
         permissionOverwrites: [{ //denying perms for everyone to see and send
             id: message.guild.id,
             deny: ["VIEW_CHANNEL", "SEND_MESSAGES"]

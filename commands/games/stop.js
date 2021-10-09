@@ -29,7 +29,7 @@ module.exports = {
 
             await message.guild.currentGames.splice(message.guild.currentGames.indexOf(currentGame), 1);
             await message.client.channels.fetch(currentGame.channelId).then (c => c.delete() )
-            await message.client.channels.fetch("892266044721344533").then (c => c.send(`channel \`#${channelName}\` is deleted and game of index ${currentGame.index} is removed <@745688196440129915>`) )
+            await message.client.channels.fetch("895296925518151751").then (c => c.send(`channel \`#${channelName}\` is deleted and game of index ${currentGame.index} is removed <@745688196440129915>`) )
 
             // message.guild.currentGames.map(g => {
             //     if(g.channelId == "April") months.splice(months.indexOf(m), 1);
