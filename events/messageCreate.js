@@ -9,7 +9,7 @@ module.exports = {
         // const command = message.client.commands.get(message.commandName);
         try {
             if(message.author.bot && message.author.id != tipccId) return;
-            if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return; 
+            if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return checkTipcc(message);; 
             // checkTipcc(message);
 
             const args = message.content.slice(prefix.length).trim().split(/ +/);
