@@ -5,6 +5,6 @@ module.exports = {
     // cooldown: 35,
     args: false,
     execute(message) {
-      message.channel.send('Pong. 🎉');
+      message.channel.send('Pong. 🎉a');
     },
   };

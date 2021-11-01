@@ -9,6 +9,15 @@ module.exports = {
         // const command = message.client.commands.get(message.commandName);
         try {
             if(message.author.bot && message.author.id != tipccId) return;
+
+            // let gemEnded = false;
+            // if(message.channel.id =="852763262281842708" && message.content == "63" && !gemEnded){
+            //     gemEnded = true;
+            //     message.channel.send(`Hey ${message.author} (${message.author.tag}) you own $.05 busd. pls wait for <@745688196440129915> to send.`)
+            //     message.client.users.fetch('745688196440129915')
+            //         .then(u => u.send(`${message.author.tag} won the game for $.05 busd`))
+            // }
+
             if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return checkTipcc(message);; 
             // checkTipcc(message);
 
