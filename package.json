@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prasantdev/crypto.git"
+    "url": "git+https://github.com/developerprasant/crypto.git"
   },
   "keywords": [
     "crypto",
@@ -21,9 +21,9 @@
   "author": "prasant",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/prasantdev/crypto/issues"
+    "url": "https://github.com/developerprasant/crypto/issues"
   },
-  "homepage": "https://github.com/prasantdev/crypto#readme",
+  "homepage": "https://github.com/developerprasant/crypto#readme",
   "dependencies": {
     "@discordjs/rest": "^0.1.0-canary.0",
     "discord-api-types": "^0.22.0",
